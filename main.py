@@ -42,15 +42,26 @@ class Sfile(object):
 
     def File_fun(self):
         '''Handle FIle parsing'''
-        m_input=raw_input("Example:\n /home/folder")
-        count=0
-        if m_input:stat=os.stat(m_input)
+        m_input=raw_input("Example:\n /home/folder");count=0
+        if m_input:
+            try:
+                stat=os.stat(m_input)
+            except IOError as E:
+                print 'Invalid Path**********Application Restarted!!!!!!!!';self.__init__()
+                
+        else:
+            count+=1
+            self.__init__()
+             print 'Maximum Trial Exceeded!!!' if count>=3   else
+                
             
-        pass  else  count+=1;self.__init__()
+        pass  
         
             
 
     def Dir_fun(self,inp):
         '''Handle Dir parsing'''
         
+    
+
     
